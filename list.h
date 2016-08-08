@@ -13,7 +13,7 @@ struct __ListNode{
          ,_pre(NULL)
     {}
 
-}
+};
 
 template <typename T>
 class List{
@@ -21,33 +21,42 @@ class List{
 public:
     List()
     {
-        InitHead(_pHead);
+        InitHead(_head);
     }
 
 
     List(size_t n, const T& value)
     {
-        InitHead(_pHead);
+        InitHead(_head);
         while(n--)
         {
             Node* tail = _head->_pre;
             Node* cur = new Node(value);
             tail->_next = cur;
-            cur->_pre = tali;
+            cur->_pre = tail;
             cur->_next = _head;
         }
+    }
 
+
+
+    ~List()
+    {
+        while(_head->_next != _head)
+        {
+
+        }
     }
 
 private:
-    void InitHead(Node*& pHead)
+    void InitHead(Node*& head)
     {
-        pHead->_next = pHead;
-        pHead->_pre = pHead;
+        head->_next = head;
+        head->_pre = head;
     }
 
 
 
 protected:
     Node* _head;
-}
+};
